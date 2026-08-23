@@ -286,9 +286,20 @@ h3 {
   text-transform: uppercase;
 }
 
-.decision-field__label--people { top: 12%; left: 10%; }
-.decision-field__label--evidence { top: 52%; right: 8%; }
-.decision-field__label--decisions { bottom: 12%; left: 20%; }
+.decision-field__label--people {
+  top: calc(25% - 3rem);
+  left: calc(26% - 4.7rem);
+}
+
+.decision-field__label--evidence {
+  top: calc(56% - 0.8rem);
+  left: calc(74% + 1.1rem);
+}
+
+.decision-field__label--decisions {
+  top: calc(76% + 1.5rem);
+  left: calc(40% - 2.8rem);
+}
 
 .decision-field__node {
   position: absolute;
@@ -299,11 +310,12 @@ h3 {
   border-radius: 50%;
   background: var(--teal);
   box-shadow: 0 0 0 1px var(--teal);
+  transform: translate(-50%, -50%);
 }
 
-.decision-field__node--one { top: 23%; left: 24%; }
-.decision-field__node--two { top: 55%; right: 24%; }
-.decision-field__node--three { bottom: 22%; left: 38%; }
+.decision-field__node--one { top: 25%; left: 26%; }
+.decision-field__node--two { top: 56%; left: 74%; }
+.decision-field__node--three { top: 76%; left: 40%; }
 
 .decision-field__line {
   position: absolute;
@@ -312,9 +324,9 @@ h3 {
   background: var(--teal);
 }
 
-.decision-field__line--one { top: 25%; left: 26%; width: 56%; transform: rotate(32deg); }
-.decision-field__line--two { top: 58%; left: 40%; width: 35%; transform: rotate(-8deg); }
-.decision-field__line--three { top: 25%; left: 26%; width: 52%; transform: rotate(74deg); }
+.decision-field__line--one { top: 25%; left: 26%; width: 61.7%; transform: rotate(38.9deg); }
+.decision-field__line--two { top: 76%; left: 40%; width: 42.2%; transform: rotate(-36.3deg); }
+.decision-field__line--three { top: 25%; left: 26%; width: 65.3%; transform: rotate(77.6deg); }
 
 .point-of-view {
   padding-block: clamp(5rem, 9vw, 8rem);
@@ -1071,6 +1083,10 @@ h3 {
     width: min(100%, 520px);
     aspect-ratio: 5 / 4;
   }
+
+  .decision-field__line--one { width: 54%; transform: rotate(27.3deg); }
+  .decision-field__line--two { width: 37.6%; transform: rotate(-25.2deg); }
+  .decision-field__line--three { width: 43.1%; transform: rotate(71.1deg); }
 
   .statement-grid,
   .expertise-grid {
