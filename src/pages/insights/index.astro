@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articles = [
+  {
+    title: 'Would we build it without the grant? Research on municipal grant decision-making',
+  },
+  {
+    title: 'From parking reform to parking governance: A municipal framework for managing reduced parking requirements in downtown areas',
+  },
+];
+---
+
+<BaseLayout
+  title="Insights | Gordon Hui"
+  description="Upcoming articles and technical notes from Gordon Hui on municipal transportation, engagement, and decision-making."
+>
+  <header class="page-hero shell section-pad">
+    <p class="eyebrow">Insights</p>
+    <h1>Practical questions from municipal transportation work.</h1>
+    <p>This section will publish original articles, technical notes, and research briefs. The first pieces are in development.</p>
+  </header>
+
+  <section class="insights-section shell">
+    <div class="insights-section__intro">
+      <p class="section-index">Articles in development</p>
+      <p>Each article will state a clear question, use evidence, acknowledge practical limits, and explain what the issue means for communities and municipal decisions.</p>
+    </div>
+    <div class="insight-list">
+      {articles.map((article, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <p class="eyebrow">In development</p>
+            <h2>{article.title}</h2>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell section-pad contact-panel">
+    <p class="eyebrow">Stay connected</p>
+    <h2>New writing will also be shared through LinkedIn.</h2>
+    <a class="button button--primary" href="https://www.linkedin.com/in/gghui/">Follow Gordon on LinkedIn</a>
+  </section>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+const { pathname } = Astro.url;
+const links = [
+  { href: '/work/', label: 'Work' },
+  { href: '/insights/', label: 'Insights' },
+  { href: '/about/', label: 'About' },
+];
+---
+
+<header class="site-header">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="site-header__inner shell">
+    <a class="wordmark" href="/" aria-label="Gordon Hui, home">
+      <span>Gordon Hui</span>
+      <small>P.Eng.</small>
+    </a>
+    <nav aria-label="Primary navigation">
+      <ul>
+        {links.map((link) => (
+          <li>
+            <a href={link.href} aria-current={pathname.startsWith(link.href) ? 'page' : undefined}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <a class="header-contact" href="mailto:hello@itsgordonhui.com">Contact</a>
+  </div>
+</header>

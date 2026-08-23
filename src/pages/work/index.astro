@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.featureOrder - b.data.featureOrder,
+);
+---
+
+<BaseLayout
+  title="Selected work | Gordon Hui"
+  description="Selected transportation strategy and parking management projects led by Gordon Hui."
+>
+  <header class="page-hero shell section-pad">
+    <p class="eyebrow">Selected work</p>
+    <h1>Projects that connect community experience with practical decisions.</h1>
+    <p>These case studies show how I lead public conversations, direct technical analysis, explain trade-offs, and help municipalities move toward a clear course of action.</p>
+  </header>
+
+  <section class="shell work-section" aria-labelledby="work-list-heading">
+    <div class="work-controls">
+      <h2 id="work-list-heading">Four selected projects</h2>
+      <div class="filter-list" aria-label="Filter projects">
+        <button type="button" data-filter="All" aria-pressed="true">All</button>
+        <button type="button" data-filter="Transportation strategy" aria-pressed="false">Transportation strategy</button>
+        <button type="button" data-filter="Parking management" aria-pressed="false">Parking management</button>
+      </div>
+    </div>
+    <div class="project-list" data-project-list>
+      {projects.map((project, index) => <ProjectCard project={project} index={index + 1} />)}
+    </div>
+  </section>
+
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    const cards = document.querySelectorAll<HTMLElement>('.project-card');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        cards.forEach((card) => {
+          card.hidden = filter !== 'All' && card.dataset.category !== filter;
+        });
+      });
+    });
+  </script>
+</BaseLayout>
