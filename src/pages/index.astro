@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('projects'))
   .sort((a, b) => a.data.featureOrder - b.data.featureOrder)
-  .slice(0, 3);
+  .slice(0, 4);
 ---
 
 <BaseLayout>
