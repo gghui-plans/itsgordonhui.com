@@ -23,4 +23,24 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects };
+const insights = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/insights' }),
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string().optional(),
+    slug: z.string(),
+    description: z.string(),
+    publicationType: z.enum(['Flagship paper', 'Practice article', 'Practice commentary', 'Case note', 'Short insight']),
+    publishedDate: z.date(),
+    updatedDate: z.date().optional(),
+    abstract: z.string(),
+    keyFindings: z.array(z.string()).default([]),
+    topics: z.array(z.string()).default([]),
+    sourceVersion: z.string().optional(),
+    companionVersion: z.string().optional(),
+    featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { projects, insights };

@@ -1241,3 +1241,422 @@ h3 {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---------------------------------------------------------------
+   Insights: article pages
+   --------------------------------------------------------------- */
+
+.insight-hero {
+  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2.5rem, 5vw, 4rem);
+}
+
+.insight-hero__inner {
+  max-width: 980px;
+}
+
+.insight-hero h1 {
+  margin: 0.6rem 0 0;
+  font-size: var(--step-3);
+}
+
+.insight-hero__deck {
+  max-width: 780px;
+  margin: 1.5rem 0 0;
+  color: var(--slate);
+  font-family: var(--serif);
+  font-size: var(--step-1);
+  line-height: 1.3;
+}
+
+.insight-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--slate);
+  font-size: var(--step--1);
+}
+
+.insight-summary {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  background: var(--paper-deep);
+}
+
+.insight-summary__grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 62rem) {
+  .insight-summary__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  }
+}
+
+.insight-abstract p:last-child {
+  max-width: 62ch;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: var(--step-1);
+  line-height: 1.45;
+}
+
+.insight-findings ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: finding;
+}
+
+.insight-findings li {
+  position: relative;
+  padding: 0.9rem 0 0.9rem 2.6rem;
+  border-top: 1px solid var(--line);
+  color: #33413e;
+  font-size: var(--step--1);
+  line-height: 1.55;
+  counter-increment: finding;
+}
+
+.insight-findings li::before {
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  content: counter(finding, decimal-leading-zero);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.insight-jump {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+  background: rgba(243, 240, 232, 0.94);
+  backdrop-filter: blur(8px);
+}
+
+.insight-jump__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+  padding-block: 0.85rem;
+}
+
+.insight-jump ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.insight-jump a {
+  color: var(--slate);
+  font-size: var(--step--1);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.insight-jump a:hover {
+  color: var(--teal);
+  text-decoration: underline;
+}
+
+.insight-article {
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+/* Article prose. The paper uses h1 for its numbered sections. */
+
+.prose--article {
+  max-width: 46rem;
+}
+
+.prose--article h1 {
+  margin: 4rem 0 1.4rem;
+  font-size: var(--step-2);
+  scroll-margin-top: 5rem;
+}
+
+.prose--article h1:first-child {
+  margin-top: 0;
+}
+
+.prose--article h2 {
+  margin: 3rem 0 1.1rem;
+  font-size: var(--step-1);
+  scroll-margin-top: 5rem;
+}
+
+.prose--article h3,
+.prose--article h4 {
+  margin: 2.2rem 0 0.9rem;
+  font-family: var(--sans);
+  font-size: var(--step-0);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.35;
+  scroll-margin-top: 5rem;
+}
+
+.prose--article ul,
+.prose--article ol {
+  margin: 0 0 1.35rem;
+  padding-left: 1.3rem;
+}
+
+.prose--article li {
+  margin-bottom: 0.5rem;
+}
+
+.prose--article blockquote {
+  margin: 2rem 0;
+  padding-left: 1.4rem;
+  border-left: 2px solid var(--teal-soft);
+  color: var(--slate);
+}
+
+.prose--article hr {
+  margin: 3.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.prose--article a {
+  color: var(--teal);
+}
+
+/* Tables scroll inside their own container, never the page. */
+
+.table-scroll {
+  margin: 1.8rem 0 2.2rem;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: var(--white);
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.table-scroll table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+}
+
+.table-scroll th,
+.table-scroll td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.table-scroll thead th {
+  border-bottom: 1px solid var(--ink);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.table-scroll tbody tr:last-child th,
+.table-scroll tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Detachable forms. Working tools, not appendices. */
+
+.detachable {
+  margin: 3.5rem 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 2px solid var(--ink);
+  background: var(--white);
+  scroll-margin-top: 5rem;
+}
+
+.detachable > h1:first-child,
+.detachable > h2:first-child {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.detachable .table-scroll {
+  border-color: rgba(21, 33, 31, 0.28);
+}
+
+.detachable .table-scroll table {
+  min-width: 30rem;
+}
+
+.detachable em {
+  color: var(--slate);
+}
+
+/* Footnotes, from remark-gfm. */
+
+.prose--article .footnotes {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--slate);
+  font-size: var(--step--1);
+}
+
+.prose--article .footnotes h2 {
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.prose--article .footnotes li {
+  margin-bottom: 0.8rem;
+}
+
+.prose--article sup a,
+.prose--article .data-footnote-backref {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.prose--article sup a:hover {
+  text-decoration: underline;
+}
+
+.insight-topics {
+  padding-block: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--line);
+}
+
+.insight-topics__grid {
+  display: grid;
+  gap: 1rem clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 48rem) {
+  .insight-topics__grid {
+    grid-template-columns: 12rem minmax(0, 1fr);
+  }
+}
+
+.contact-panel__note {
+  max-width: 60ch;
+  margin: -1.5rem 0 2.5rem;
+  color: var(--slate);
+}
+
+/* Insights index */
+
+.insight-list--published h2 a {
+  text-decoration: none;
+}
+
+.insight-list--published h2 a:hover {
+  color: var(--teal);
+  text-decoration: underline;
+}
+
+.insight-list__deck {
+  margin-bottom: 0.9rem;
+  color: var(--slate);
+  font-family: var(--serif);
+  font-size: var(--step-0);
+}
+
+.insight-list--published .text-link {
+  display: inline-block;
+  margin-top: 0.4rem;
+}
+
+/* ---------------------------------------------------------------
+   Print. The two detachable forms must come out as usable forms.
+   --------------------------------------------------------------- */
+
+@media print {
+  .site-header,
+  .site-footer,
+  .insight-jump,
+  .contact-panel,
+  .insight-topics,
+  .back-link {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 10.5pt;
+  }
+
+  body {
+    background-image: none;
+  }
+
+  .shell {
+    max-width: none;
+    padding: 0;
+  }
+
+  .insight-summary {
+    background: none;
+  }
+
+  .prose--article {
+    max-width: none;
+  }
+
+  .prose--article h1,
+  .prose--article h2,
+  .prose--article h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .table-scroll {
+    overflow: visible;
+    border: 1px solid #000;
+  }
+
+  .table-scroll table {
+    min-width: 0;
+    width: 100%;
+    font-size: 9.5pt;
+  }
+
+  .table-scroll th,
+  .table-scroll td {
+    border-bottom: 1px solid #666;
+    white-space: normal;
+  }
+
+  .table-scroll tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .detachable {
+    break-before: page;
+    page-break-before: always;
+    padding: 0;
+    border: 0;
+  }
+
+  .detachable .table-scroll {
+    border-color: #000;
+  }
+}

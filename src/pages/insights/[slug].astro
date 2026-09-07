@@ -1,0 +1,127 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const insights = (await getCollection('insights')).filter((entry) => !entry.data.draft);
+  return insights.map((insight) => ({
+    params: { slug: insight.data.slug },
+    props: { insight },
+  }));
+}
+
+const { insight } = Astro.props;
+const { Content } = await render(insight);
+const { data } = insight;
+
+const dateFormat = new Intl.DateTimeFormat('en-CA', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+const published = dateFormat.format(data.publishedDate);
+const publishedISO = data.publishedDate.toISOString().slice(0, 10);
+const updatedISO = data.updatedDate ? data.updatedDate.toISOString().slice(0, 10) : null;
+const updated = data.updatedDate ? dateFormat.format(data.updatedDate) : null;
+const canonicalPath = `/insights/${data.slug}/`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: data.title,
+  alternativeHeadline: data.subtitle,
+  description: data.description,
+  abstract: data.abstract,
+  datePublished: publishedISO,
+  ...(updatedISO ? { dateModified: updatedISO } : {}),
+  inLanguage: 'en-CA',
+  keywords: data.topics.join(', '),
+  author: {
+    '@type': 'Person',
+    name: 'Gordon Hui',
+    honorificSuffix: 'P.Eng.',
+    url: 'https://itsgordonhui.com/about/',
+  },
+  mainEntityOfPage: new URL(canonicalPath, Astro.site).toString(),
+};
+---
+
+<BaseLayout
+  title={`${data.title} | Gordon Hui`}
+  description={data.description}
+  canonicalPath={canonicalPath}
+  socialImage={false}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <header class="insight-hero">
+    <div class="shell insight-hero__inner">
+      <a class="back-link" href="/insights/">← All insights</a>
+      <p class="eyebrow">{data.publicationType}</p>
+      <h1>{data.title}</h1>
+      {data.subtitle && <p class="insight-hero__deck">{data.subtitle}</p>}
+      <div class="insight-hero__meta">
+        <span>Gordon Hui, P.Eng.</span>
+        <span>
+          <time datetime={publishedISO}>{published}</time>
+          {updated && updatedISO && <> · Updated <time datetime={updatedISO}>{updated}</time></>}
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <section class="insight-summary">
+    <div class="shell insight-summary__grid">
+      <div class="insight-abstract">
+        <p class="section-index">Abstract</p>
+        <p>{data.abstract}</p>
+      </div>
+      {data.keyFindings.length > 0 && (
+        <div class="insight-findings">
+          <p class="section-index">What the review found</p>
+          <ol>
+            {data.keyFindings.map((finding) => <li>{finding}</li>)}
+          </ol>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <nav class="insight-jump" aria-label="Jump to key sections">
+    <div class="shell insight-jump__inner">
+      <p class="eyebrow">Jump to</p>
+      <ul>
+        <li><a href="#decision-1-investigate">Decision 1: Investigate</a></li>
+        <li><a href="#decision-2-apply">Decision 2: Apply</a></li>
+        <li><a href="#decision-3-accept">Decision 3: Accept</a></li>
+        <li><a href="#decision-summary">Decision Summary form</a></li>
+        <li><a href="#acceptance-worksheet">Acceptance worksheet</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <article class="insight-article shell">
+    <div class="prose prose--article">
+      <Content />
+    </div>
+  </article>
+
+  {data.topics.length > 0 && (
+    <section class="insight-topics">
+      <div class="shell insight-topics__grid">
+        <p class="section-index">Topics</p>
+        <ul class="tag-list">
+          {data.topics.map((topic) => <li>{topic.replace(/-/g, ' ')}</li>)}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <section class="shell section-pad contact-panel">
+    <p class="eyebrow">Request the supporting documents</p>
+    <h2>A formatted PDF of this paper and its technical companion are available on request.</h2>
+    <p class="contact-panel__note">The technical companion carries the full method, the formal tests, the financial bases, the 12 case profiles, and the verified public source routes.</p>
+    <a class="button button--primary" href={`mailto:hello@itsgordonhui.com?subject=${encodeURIComponent(data.title)}`}>Email Gordon</a>
+  </section>
+</BaseLayout>
