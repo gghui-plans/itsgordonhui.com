@@ -312,7 +312,7 @@ The views in this paper are my own. They are not the views of my employer. No em
 
 ## Source notes and companion reference
 
-This paper uses a deliberately light citation layer: aggregate claims and the three case illustrations route first to the reconciled technical companion, which supplies the complete analytical trail and readable public-source notes. General professional guidance is not cited as an empirical finding.
+This paper uses a deliberately light citation layer: aggregate claims and the three case illustrations route first to the technical companion, which supplies the complete analytical trail and readable public-source notes. General professional guidance is not cited as an empirical finding.
 
 All empirical counts, case classifications and case illustrations are drawn from the *Technical Companion*. Its Table 11 and Schedule F1 show where each statement in this paper draws its evidence; Appendices A–D provide the case profiles, evidence completeness schedules, financial bases and proposition tests; and its numbered notes provide the public-source routes.
 
@@ -320,7 +320,7 @@ All empirical counts, case classifications and case illustrations are drawn from
 
 The proposed municipal decision system, detachable assessment and optional worksheet are subsequent professional guidance and should not be attributed to the cases as empirically tested interventions.
 
-[^1]: *Would We Build It Without the Grant? Technical Companion: What 12 Ontario Municipal Cases Show and the Evidence Behind the Findings*, Sections 1.2–1.4 and 4.1–4.5, Tables 5–7 and Appendices B–C. Its analytical note identifies the frozen proposition matrix, analytical findings freeze, finalization record and approved human-review log supporting the counts and classifications.
+[^1]: *Would We Build It Without the Grant? Technical Companion: What 12 Ontario Municipal Cases Show and the Evidence Behind the Findings*, Sections 1.2–1.4 and 4.1–4.5, Tables 5–7 and Appendices B–C. Its analytical note records the basis for the counts and classifications.
 
 [^2]: Technical companion, Box 3 and Schedules A11 and C1. Underlying public sources include Town of Fort Erie, *Award of Engineering Services, Replacement of Ott Road Bridge (S051B), Report IS-43-2019* (December 2, 2019); *Award of Tender for Ott Road Bridge (S051B) Replacement, Report IS-15-2021* (April 19, 2021); and *Bridge & Culvert Repair/Replacement Program (BRIG20) in 2021: Ott Road Bridge Replacement* (December 3, 2021). Verified links and locations are in technical-companion source note 15.
 
